@@ -13,18 +13,14 @@ int minSubArrayLen(int target, vector<int> &nums)
     {
         sum = sum + nums[right];
         // shrink
-        if (sum >= target)
+        while(sum >= target)
         {
             minn = min(minn, (right - left) + 1);
             sum = sum - nums[left];
-            sum = sum - nums[right];
             left = left + 1;
         }
         // expand
-        else
-        {
-            right++;
-        }
+        right++;
     }
     if (minn == INT_MAX)
     {
